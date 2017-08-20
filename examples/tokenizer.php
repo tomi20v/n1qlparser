@@ -3,7 +3,7 @@
 use tomi20v\n1qlparser\Service\LexerFactory;
 use tomi20v\n1qlparser\Service\LexerService;
 
-require(dirname(__FILE__) . '/../vendor/autoload.php');
+require(__DIR__ . '/../vendor/autoload.php');
 
 $exampleN1qls = [
     'SELECT *, null, true, false',
