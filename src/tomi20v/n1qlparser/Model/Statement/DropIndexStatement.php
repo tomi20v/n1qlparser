@@ -6,6 +6,12 @@ class DropIndexStatement
 {
 
     /**
+     * @tokenType statement
+     * @pattern drop index
+     */
+    public $statement;
+
+    /**
      * @optional
      * @as Meta\NamedKeyspaceRef
      */
