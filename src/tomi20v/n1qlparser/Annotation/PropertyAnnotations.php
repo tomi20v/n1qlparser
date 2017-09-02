@@ -6,10 +6,11 @@ class PropertyAnnotations
 {
 
     public $as = [];
+    public $tokenType = [];
     public $pattern = [];
     public $required = true;
-    public $tokenType = [];
     public $with = [];
     public $notWith = [];
+    public $suffix = [];
 
 }

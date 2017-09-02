@@ -3,6 +3,7 @@
 namespace tomi20v\n1qlparser\Annotation;
 
 use tomi20v\n1qlparser\Annotation\Strategy\NotWithAnnotation;
+use tomi20v\n1qlparser\Annotation\Strategy\SuffixAnnotation;
 use tomi20v\n1qlparser\Annotation\Strategy\TokenTypeAnnotation;
 use tomi20v\n1qlparser\Annotation\Strategy\AsAnnotation;
 use tomi20v\n1qlparser\Annotation\Strategy\OptionalAnnotation;
@@ -24,6 +25,7 @@ class PropertyAnnotationsFactory
             new TokenTypeAnnotation(),
             new WithAnnotation(),
             new NotWithAnnotation(),
+            new SuffixAnnotation(),
         ];
     }
 

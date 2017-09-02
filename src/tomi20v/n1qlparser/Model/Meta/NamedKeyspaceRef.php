@@ -6,19 +6,20 @@ class NamedKeyspaceRef
 {
 
     /**
+     * @tokenType data/string
+     * @pattern [a-zA-Z][a-zA-Z0-9#_\-]*
+     * @suffix colon
      * @optional
-     * @pattern [a-zA-Z][a-zA-Z0-9#_]*
-     * @with colon
      */
     public $namespaceName;
     /**
      * @tokenType operator/colon
-     * @with namespaceName
+     * @optional
      */
     public $colon;
     /**
-     * @required
-     * @pattern [a-zA-Z][a-zA-Z0-9#_]*
+     * @tokenType data/string
+     * @pattern [a-zA-Z][a-zA-Z0-9#_\-]*
      */
     public $keyspaceName;
 
