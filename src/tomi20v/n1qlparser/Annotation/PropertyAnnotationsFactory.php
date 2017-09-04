@@ -16,9 +16,9 @@ class PropertyAnnotationsFactory
     /** @var StrategyInterface[] */
     private $strategies;
 
-    public function __construct()
+    public function __construct(array $strategies = null)
     {
-        $this->strategies = [
+        $this->strategies = $strategies ?: [
             new AsAnnotation(),
             new PatternAnnotation(),
             new OptionalAnnotation(),
@@ -29,13 +29,13 @@ class PropertyAnnotationsFactory
         ];
     }
 
-    public function fromPhpDoc(string $phpDoc)
+    public function fromPhpDoc(string $phpDoc): PropertyAnnotation
     {
-        $annotations = new PropertyAnnotations();
+        $annotations = new PropertyAnnotation();
         $doc = explode("\n", $phpDoc);
         foreach ($doc as $eachLine) {
             foreach ($this->strategies as $eachStrategy) {
-                $pattern = '/\*\s+@' . $eachStrategy::KEYWORD . '(\s+(.+)\s*)?$/';
+                $pattern = '/\*\s+@' . $eachStrategy->keyword() . '(\s+(.+)\s*)?$/';
                 if (preg_match($pattern, $eachLine, $matches)) {
                     $match = isset($matches[2]) ? $matches[2] : null;
                     $eachStrategy->mutate($annotations, $match);

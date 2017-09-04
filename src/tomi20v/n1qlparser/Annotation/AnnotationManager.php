@@ -5,12 +5,20 @@ namespace tomi20v\n1qlparser\Annotation;
 class AnnotationManager
 {
 
-    public function annotationByClass(string $className, string $propertyName)
+    /** @var PropertyAnnotationsFactory */
+    private $propertyAnnotationsFactory;
+
+    public function __construct(
+        PropertyAnnotationsFactory $propertyAnnotationsFactory
+    ) {
+        $this->propertyAnnotationsFactory = $propertyAnnotationsFactory;
+    }
+
+    public function annotationByClass(string $className, string $propertyName): PropertyAnnotation
     {
         $reflectionProperty = new \ReflectionProperty($className, $propertyName);
         $phpDoc = $reflectionProperty->getDocComment();
-        $propertyAnnotationsFactory = new PropertyAnnotationsFactory();
-        $annotations = $propertyAnnotationsFactory->fromPhpDoc($phpDoc);
+        $annotations = $this->propertyAnnotationsFactory->fromPhpDoc($phpDoc);
         return $annotations;
     }
 

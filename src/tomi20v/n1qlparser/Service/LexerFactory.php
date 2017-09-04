@@ -170,7 +170,6 @@ class LexerFactory
 
     public function createConfig()
     {
-//        var $D = '';
         return new LexerArrayConfig([
             // whitespace, trailing semicolon
             '\\s' => '',

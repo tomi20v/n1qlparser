@@ -2,7 +2,7 @@
 
 namespace tomi20v\n1qlparser\Annotation;
 
-class PropertyAnnotations
+class PropertyAnnotation
 {
 
     public $as = [];

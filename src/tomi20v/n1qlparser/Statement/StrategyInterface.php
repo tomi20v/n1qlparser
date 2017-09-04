@@ -17,7 +17,7 @@ interface StrategyInterface
      * @param StatementFactoryResult $prevResult
      * @param StatementFactoryInterface $statementFactory
      * @return StatementFactoryResult
-     * @internal param PropertyAnnotations $annotation
+     * @internal param PropertyAnnotation $annotation
      */
     public function build(
         array $tokens,
