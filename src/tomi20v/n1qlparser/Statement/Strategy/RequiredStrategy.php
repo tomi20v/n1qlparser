@@ -2,9 +2,9 @@
 
 namespace tomi20v\n1qlparser\Statement\Strategy;
 
-use tomi20v\n1qlparser\Annotation\AnnotationException;
 use tomi20v\n1qlparser\Model\StatementFactoryResult;
 use tomi20v\n1qlparser\Statement\StatementFactoryInterface;
+use tomi20v\n1qlparser\Statement\Strategy\Exception\RequiredException;
 use tomi20v\n1qlparser\Statement\StrategyInterface;
 
 class RequiredStrategy implements StrategyInterface
@@ -19,7 +19,7 @@ class RequiredStrategy implements StrategyInterface
     ): StatementFactoryResult {
 
         if ($annotations[$propertyName]->required && $prevResult->isEmpty()) {
-            throw new AnnotationException();
+            throw new RequiredException();
         }
 
         return $prevResult;
