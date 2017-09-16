@@ -2,31 +2,10 @@
 
 namespace tomi20v\n1qlparser\Statement\Strategy;
 
-use PHPUnit\Framework\TestCase;
 use tomi20v\n1qlparser\Annotation\PropertyAnnotation;
-use tomi20v\n1qlparser\Model\StatementFactoryResult;
-use tomi20v\n1qlparser\Statement\StatementFactoryInterface;
 
-class RequiredStrategyTest extends TestCase
+class RequiredStrategyTest extends AbstractStrategyTestCase
 {
-
-    /** @var RequiredStrategy */
-    private $strategy;
-    private $anyPropertyName = 'anyPropertyName';
-    /** @var StatementFactoryResult|\PHPUnit_Framework_MockObject_MockObject */
-    private $anyPrevResult;
-    /** @var StatementFactoryInterface|\PHPUnit_Framework_MockObject_MockObject */
-    private $anyStatementFactory;
-
-
-    public function setUp()
-    {
-        $this->strategy = new RequiredStrategy();
-        $this->anyPrevResult = $this->getMockBuilder(StatementFactoryResult::class)
-            ->getMock();
-        $this->anyStatementFactory = $this->getMockBuilder(StatementFactoryInterface::class)
-            ->getMock();
-    }
 
     /**
      * @dataProvider returnsPrevResultProvider
@@ -81,6 +60,11 @@ class RequiredStrategyTest extends TestCase
             $this->anyStatementFactory
         );
 
+    }
+
+    protected function createStrategy()
+    {
+        return new RequiredStrategy();
     }
 
 }

@@ -18,6 +18,10 @@
   "autoload": {
     "psr-4": {
       "tomi20v\\n1qlparser\\": "src/tomi20v/n1qlparser"
-    }
+    },
+    "files": [
+      "tests/tomi20v/n1qlparser/Annotation/Strategy/AnnotationTester.php",
+      "tests/tomi20v/n1qlparser/Statement/Strategy/AbstractStrategyTestCase.php"
+    ]
   }
 }

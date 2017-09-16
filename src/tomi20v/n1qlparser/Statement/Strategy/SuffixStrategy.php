@@ -20,18 +20,17 @@ class SuffixStrategy implements StrategyInterface
 
         $annotation = $annotations[$propertyName];
 
-        if (!$prevResult->isEmpty() && !empty($annotation->suffix)) {
+        $isEmpty = $prevResult->isEmpty();
+        if (!$isEmpty && !empty($annotation->suffix)) {
 
             $found = false;
             foreach ($annotation->suffix as $eachSuffix) {
                 if (!isset($annotations[$eachSuffix])) {
-                    throw new AnnotationException('invalid suffix "' . $eachSuffix);
+                    throw new AnnotationException('invalid suffix "' . $eachSuffix . '"');
                 }
-                $result = $statementFactory->buildProperty(
-                    array_slice($tokens, 1),
-                    $eachSuffix,
-                    $annotations
-                );
+                $tokensSlice = array_slice($tokens, 1);
+                $result = $statementFactory
+                    ->buildProperty($tokensSlice, $eachSuffix, $annotations);
                 $found = !$result->isEmpty();
                 if ($found) {
                     break;
@@ -43,7 +42,6 @@ class SuffixStrategy implements StrategyInterface
             }
 
         }
-
 
         return $prevResult;
 
